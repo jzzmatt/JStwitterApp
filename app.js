@@ -20,8 +20,9 @@ app.get('/tweets', (req, res) => {
     //console.log(req.query)
     const query = req.query.q;
     const count = req.query.count;
+    const maxID = req.query.max_id;
     //console.log(process.env.TWITTER_API_TOKEN);
-    twitter.get(query, count).then((response) => {
+    twitter.get(query, count, maxID).then((response) => {
         res.status(200).send(response.data);
 
     }).catch((error) => {res.status(400).send(error)});
